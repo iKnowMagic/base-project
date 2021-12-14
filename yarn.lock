@@ -2766,10 +2766,10 @@ vite-plugin-eslint@^1.3.0:
     eslint "^7.26.0"
     rollup "^2.47.0"
 
-vite-plugin-linter@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-linter/-/vite-plugin-linter-1.0.1.tgz#2b336814096cdf52c4d425302d98631105a4f64f"
-  integrity sha512-3jjmM7MPIl5g+7btlA9vPpu/9s9oLaC7QrEaa74UAizHQdECrZUatndIFwY04Twwj5HmClv+ycNRtC7hZnAsEA==
+vite-plugin-linter@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-linter/-/vite-plugin-linter-1.0.2.tgz#174c2c71258b5079770b6b0b2d33a3bfb3662587"
+  integrity sha512-aSQzb+l6pPLOuDMwZvBF6NSGsN8ksHYccj1vN7GBkeAxI76VAI/hdMum3fwz4sVanezFMXQ0Kwutx0E7q4S/9w==
   dependencies:
     "@rollup/pluginutils" "4.1.1"
     "@types/eslint" "7.28.1"
