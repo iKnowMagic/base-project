@@ -33,5 +33,6 @@ export default defineConfig({
         '8': '#161932'
       }
     }
-  }
+  },
+  shortcuts: {}
 })
