@@ -34,6 +34,12 @@ module.exports = {
         '@typescript-eslint/no-require-imports': 'off',
         'unicorn/prefer-module': 'off'
       }
+    },
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true
+      }
     }
   ]
 }
