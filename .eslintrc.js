@@ -22,23 +22,29 @@ module.exports = {
     ...require('./config/eslint-rules-vue.js'),
     ...require('./config/eslint-rules-prettier.js'),
     ...require('./config/eslint-rules-sort.js'),
-    // ...require('./config/eslint-rules-accessibility.js'),
     ...require('./config/eslint-rules-sonarjs.js'),
-    // ...require('./config/eslint-rules-unicorn.js'),
     ...require('./config/eslint-rules-typescript.js')
   },
   overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/*.spec.{j,t}s?(x)',
+        '**/*.test.{j,t}s?(x)',
+        './tests/unit/setup.ts'
+      ],
+      env: {
+        jest: true
+      },
+      rules: {
+        'no-undef': 'off'
+      }
+    },
     {
       files: ['.eslintrc.js', '*.config.js'],
       rules: {
         '@typescript-eslint/no-require-imports': 'off',
         'unicorn/prefer-module': 'off'
-      }
-    },
-    {
-      files: ['**/__tests__/*.{j,t}s?(x)', '**/*.spec.{j,t}s?(x)'],
-      env: {
-        jest: true
       }
     }
   ]

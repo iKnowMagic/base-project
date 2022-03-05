@@ -14,9 +14,8 @@ module.exports = {
         ['^\\u0000'],
 
         // Packages.
-        // App Items
-        ['^@vueuse', '^lodash', '^dayjs'],
-        ['^uniqid', '^alasql'],
+        ['^lodash'],
+        ['^uniqid', '^moment', '^alasql'],
         ['^@/services', 'pinia', '@/store'],
         ['^@/helpers'],
 

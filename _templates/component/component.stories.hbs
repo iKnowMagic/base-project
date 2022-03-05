@@ -1,0 +1,50 @@
+import '@/styles/main.scss'
+import '@/helpers/theme-variables.ts'
+
+import { app } from '@storybook/vue3'
+import mitt from 'mitt'
+
+import Card from '@/components/Card'
+import FontAwesomeIcon from '@/fontawesome'
+import i18n from '@/i18n'
+import store from '@/store'
+
+import SearchFilters from './index'
+
+const emitter = mitt()
+app.component('FontAwesomeIcon', FontAwesomeIcon).use(i18n).use(store)
+
+app.config.globalProperties.$on = emitter.on
+app.config.globalProperties.$off = emitter.off
+app.config.globalProperties.$emit = emitter.emit
+
+export default {
+  title: '{{name}}',
+  component: {{name}}
+}
+
+const Template = args => ({
+  // Components used in your story `template` are defined in the `components` object
+  components: { {{name}}, Card },
+  // The story's `args` need to be mapped into the template through the `setup()` method
+  // setup() {
+  //   return { ...args }
+  // },
+
+  data() {
+    return {
+      args
+    }
+  },
+  // And then the `args` are bound to your component with `v-bind="args"`
+  template: `
+  <card>
+  <{{dashCase name}} v-bind="args">
+
+  </{{dashCase name}}>
+  </card>
+  `
+})
+
+export const Primary = Template.bind({})
+Primary.args = {}

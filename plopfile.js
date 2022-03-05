@@ -1,9 +1,44 @@
+// usage: yarn new
+
 const fs = require('fs')
 
 module.exports = plop => {
+  plop.setGenerator('spec', {
+    description: 'Vue Test',
+    prompts: [
+      {
+        type: 'input',
+        name: 'dir',
+        message: 'dir name'
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'component name'
+      }
+    ],
+    actions: [
+      function createTestsDir(answers) {
+        if (!fs.existsSync(`${answers.dir}/__tests__`)) {
+          fs.mkdirSync(`${answers.dir}/__tests__`)
+        }
+      },
+      {
+        type: 'add',
+        path: '{{dir}}/__tests__/{{name}}.spec.ts',
+        templateFile: '_templates/component/component.spec.hbs'
+      }
+    ]
+  })
+
   plop.setGenerator('component', {
     description: 'Vue Component',
     prompts: [
+      {
+        type: 'input',
+        name: 'folder',
+        message: 'component folder'
+      },
       {
         type: 'input',
         name: 'name',
@@ -12,35 +47,37 @@ module.exports = plop => {
     ],
     actions: [
       function createComponentDir(answers) {
-        if (!fs.existsSync(`src/components/${answers.name}`)) {
-          fs.mkdirSync(`src/components/${answers.name}`)
+        if (!fs.existsSync(`src/${answers.folder}/${answers.name}`)) {
+          fs.mkdirSync(`src/${answers.folder}/${answers.name}`)
         }
       },
       {
         type: 'add',
-        path: 'src/components/{{name}}/{{name}}.vue',
+        path: 'src/{{folder}}/{{name}}/{{name}}.vue',
         templateFile: '_templates/component/component.vue.hbs'
       },
       {
         type: 'add',
-        path: 'src/components/{{name}}/index.ts',
+        path: 'src/{{folder}}/{{name}}/index.ts',
         templateFile: '_templates/component/component.index.hbs'
       },
-      {
-        type: 'add',
-        path: 'src/components/{{name}}/_{{dashCase name}}.scss',
-        templateFile: '_templates/component/component.scss.hbs'
+      function createTestsDir(answers) {
+        if (
+          !fs.existsSync(`src/${answers.folder}/${answers.name}/__tests__`)
+        ) {
+          fs.mkdirSync(`src/${answers.folder}/${answers.name}/__tests__`)
+        }
       },
       {
         type: 'add',
-        path: 'src/components/{{name}}/{{name}}.spec.ts',
+        path: 'src/{{folder}}/{{name}}/__tests__/{{name}}.spec.ts',
         templateFile: '_templates/component/component.spec.hbs'
-      },
-      {
-        type: 'add',
-        path: 'src/components/{{name}}/{{name}}.stories.ts',
-        templateFile: '_templates/component/component.stories.hbs'
       }
+      // {
+      //   type: 'add',
+      //   path: 'src/{{folder}}/{{name}}/{{name}}.stories.ts',
+      //   templateFile: '_templates/component/component.stories.hbs'
+      // }
     ]
   })
 

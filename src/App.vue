@@ -1,11 +1,11 @@
-<template>
-  <router-view />
-</template>
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'App'
-})
+import { useTest } from '@/store'
+const test = useTest()
 </script>
+
+<template>
+  <div class="border">{{ test.hello }}</div>
+</template>

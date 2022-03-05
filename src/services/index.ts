@@ -1,3 +1,3 @@
-import test from './modules/test'
+import modules from '@/services/modules'
 
-export default { test }
+export default modules
