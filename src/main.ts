@@ -5,12 +5,13 @@ import '@/styles/index.scss'
 import store from '@/store'
 
 import mitt from 'mitt'
-import VConsole from 'vconsole'
 
 import App from './App.vue'
 
-console.log('Hello world')
-const vConsole = new VConsole()
+// if (import.meta.env.MODE === 'development') {
+// import VConsole from 'vconsole'
+//   const vConsole = new VConsole()
+// }
 
 const mountApp = async () => {
   const app = createApp(App)
