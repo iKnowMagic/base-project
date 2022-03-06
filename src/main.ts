@@ -6,7 +6,10 @@ import store from '@/store'
 
 import mitt from 'mitt'
 
+import router from '@/router'
+
 import App from './App.vue'
+import FontAwesomeIcon from './fontawesome'
 
 // if (import.meta.env.MODE === 'development') {
 // import VConsole from 'vconsole'
@@ -18,14 +21,12 @@ const mountApp = async () => {
 
   const emitter = mitt()
 
-  app
-    //   .use(router)
-    .use(store)
+  app.use(router).use(store).component('FontAwesomeIcon', FontAwesomeIcon)
   //   .use(i18n)
 
   app.config.globalProperties.emitter = emitter
 
-  // await router.isReady()
+  await router.isReady()
   app.mount('#app')
 }
 
